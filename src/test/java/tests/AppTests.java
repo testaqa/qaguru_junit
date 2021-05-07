@@ -2,6 +2,8 @@ package tests;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static com.codeborne.selenide.Condition.exist;
 
@@ -23,5 +25,11 @@ public class AppTests extends BaseTest{
     void StepsInPage() {
         homePage.VerifySearchFieldExists();
         homePage.VerifyMenuSectionsCount(6);
+    }
+
+    @ValueSource(strings = {"hello", "world"})
+    @ParameterizedTest
+    void SearchFieldExists(String searchValue) {
+        homePage.searchField.setValue(searchValue);
     }
 }
