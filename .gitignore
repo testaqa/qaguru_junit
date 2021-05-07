@@ -1,0 +1,12 @@
+.idea/
+.gradle/
+gradle/
+build/
+.allure/
+allure-results/
+
+*.iml
+*.log
+*.txt
+gradlew.bat
+gradlew
