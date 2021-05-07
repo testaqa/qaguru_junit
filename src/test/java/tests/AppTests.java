@@ -68,4 +68,10 @@ public class AppTests extends BaseTest {
                 Arguments.of(b, "^^^")
         );
     }
+
+    @ValueSource(strings = {"hello", "world"})
+    @ParameterizedTest(name = "Test for word {0}")
+    void SearchWithNamedParametrized(String searchValue) {
+        homePage.searchField.setValue(searchValue);
+    }
 }
