@@ -1,6 +1,8 @@
 package tests;
 
+import extensions.TestDurationReportExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.io.TempDir;
 
 import java.io.IOException;
@@ -10,6 +12,7 @@ import java.nio.file.Path;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@ExtendWith(TestDurationReportExtension.class)
 public class OtherTests {
 
     int MyDoublerMethod(int num) {
@@ -32,5 +35,11 @@ public class OtherTests {
         Path createdFile = Files.createFile(tempDir.resolve("createdFile.txt"));
 
         assertTrue(createdFile.toFile().exists());
+    }
+
+    @Test
+    void MyExtended() throws InterruptedException {
+        Thread.sleep(500);
+        assertTrue(true);
     }
 }
