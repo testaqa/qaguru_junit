@@ -1,5 +1,7 @@
 package tests;
 
+import extensions.RandomInt;
+import extensions.RandomIntAnnotationProcessor;
 import extensions.TestDurationReportExtension;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,7 +14,7 @@ import java.nio.file.Path;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@ExtendWith(TestDurationReportExtension.class)
+@ExtendWith({TestDurationReportExtension.class, RandomIntAnnotationProcessor.class})
 public class OtherTests {
 
     int MyDoublerMethod(int num) {
@@ -29,6 +31,9 @@ public class OtherTests {
 
     @TempDir
     Path tempDir;
+
+    @RandomInt
+    private int randomInt;
 
     @Test
     void TempDirForTest() throws IOException {
